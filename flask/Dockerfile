@@ -8,7 +8,7 @@ RUN pip install flask
 RUN pip install requests
 
 # Add app configuration to Nginx
-# COPY nginx.conf /etc/nginx/conf.d/
+COPY gossl/flask/nginx.conf /etc/nginx/conf.d/
 
 # Copy sample app
-COPY ./app /app
+COPY gossl/flask/app /app
