@@ -16,7 +16,7 @@ def qWhiteList(url):
         site = "sinaimg"
     elif re.match(r'p[0-9]\.music.126.net\/', url):
         site = "163music"
-	elif re.match(r'magiccards.info\/', url):
+	elif re.match(r'ww[a-z]\.magiccards.info\/', url):
         site = "magiccards"
     else:
          abort(403)
