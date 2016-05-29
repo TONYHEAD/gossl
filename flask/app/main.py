@@ -34,9 +34,6 @@ def proxy(url):
         headers = r.raw.headers.items()
         if postfix == "mp3":
             headers[-2] = ("Content-Type","audio/mpeg; charset=UTF-8")
-	elif site == "magiccards":
-        r = requests.get("http://"+url, stream=True)
-        headers = r.raw.headers.items()
     else:
         pass
     def generate():
