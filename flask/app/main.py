@@ -16,6 +16,8 @@ def qWhiteList(url):
         site = "sinaimg"
     elif re.match(r'p[0-9]\.music.126.net\/', url):
         site = "163music"
+	elif re.match(r'magiccards.info\/', url):
+        site = "magiccards"
     else:
          abort(403)
     return [site,postfix]
@@ -32,8 +34,9 @@ def proxy(url):
         headers = r.raw.headers.items()
         if postfix == "mp3":
             headers[-2] = ("Content-Type","audio/mpeg; charset=UTF-8")
-        else:
-            pass
+	elif site == "magiccards":
+        r = requests.get("http://"+url, stream=True)
+        headers = r.raw.headers.items()
     else:
         pass
     def generate():
@@ -44,15 +47,15 @@ def proxy(url):
     
 @app.errorhandler(403)
 def forbidden(e):
-	return redirect("https://yux.io")
+	return redirect("https://www.tonyhead.com/")
 
 @app.errorhandler(404)
 def page_not_found(e):
-	return redirect("https://yux.io")
+	return redirect("https://www.tonyhead.com/")
 
 @app.errorhandler(500)
 def internal_server_rror(e):
-	return redirect("https://yux.io")
+	return redirect("https://www.tonyhead.com/")
 
 if __name__ == '__main__':
     app.run()
